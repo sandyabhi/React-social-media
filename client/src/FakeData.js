@@ -6,22 +6,22 @@ export const Users = [
     },
     {
       id:2,
-      profilePicture: "https://static.wikia.nocookie.net/shingekinokyojin/images/8/8f/Isabel_Magnolia_%28Anime%29_character_image.png/revision/latest/scale-to-width-down/150?cb=20170629015437",
+      profilePicture: "https://static.wikia.nocookie.net/shingekinokyojin/images/8/8f/Isabel_Magnolia_%28Anime%29_character_image.png",
       username: "Isabel Magnolia",
     },
     {
       id:3,
-      profilePicture: "https://static.wikia.nocookie.net/shingekinokyojin/images/e/e4/Hange_Zo%C3%AB_%28Anime%29_character_image.png/revision/latest/scale-to-width-down/150?cb=20210221212604",
+      profilePicture: "https://static.wikia.nocookie.net/shingekinokyojin/images/e/e4/Hange_Zo%C3%AB_%28Anime%29_character_image.png",
       username: "Hange Zoe",
     },
     {
       id:4,
-      profilePicture: "https://static.wikia.nocookie.net/shingekinokyojin/images/0/0a/Sasha_Braus_%28Anime%29_character_image.png/revision/latest/scale-to-width-down/150?cb=20210124211650",
+      profilePicture: "https://static.wikia.nocookie.net/shingekinokyojin/images/0/0a/Sasha_Braus_%28Anime%29_character_image.png",
       username: "Sasha Braus",
     },
     {
       id:5,
-      profilePicture: "https://static.wikia.nocookie.net/shingekinokyojin/images/1/12/Lynne_%28Anime%29_character_image.png/revision/latest/scale-to-width-down/150?cb=20180217185349",
+      profilePicture: "https://static.wikia.nocookie.net/shingekinokyojin/images/1/12/Lynne_%28Anime%29_character_image.png",
       username: "Lynne",
     },
     {
@@ -31,22 +31,22 @@ export const Users = [
     },
     {
       id:7,
-      profilePicture: "https://static.wikia.nocookie.net/shingekinokyojin/images/f/f7/Rico_Brzenska_%28Anime%29_character_image.png/revision/latest/scale-to-width-down/150?cb=20170430033417",
+      profilePicture: "https://static.wikia.nocookie.net/shingekinokyojin/images/f/f7/Rico_Brzenska_%28Anime%29_character_image.png",
       username: "Rico Brzenska",
     },
     {
       id:8,
-      profilePicture: "https://static.wikia.nocookie.net/shingekinokyojin/images/9/9a/Mina_Carolina_%28Anime%29_character_image.png/revision/latest/scale-to-width-down/150?cb=20130820182300",
+      profilePicture: "https://static.wikia.nocookie.net/shingekinokyojin/images/9/9a/Mina_Carolina_%28Anime%29_character_image.png",
       username: "Mina Carolina",
     },
     {
       id:9,
-      profilePicture: "https://static.wikia.nocookie.net/shingekinokyojin/images/6/66/Annie_Leonhart_%28Anime%29_character_image.png/revision/latest/scale-to-width-down/150?cb=20171207050656",
+      profilePicture: "https://static.wikia.nocookie.net/shingekinokyojin/images/6/66/Annie_Leonhart_%28Anime%29_character_image.png",
       username: "Annie Leonhart",
     },
     {
       id:10,
-      profilePicture: "https://static.wikia.nocookie.net/shingekinokyojin/images/0/05/Frieda_Reiss_%28Anime%29_character_image.png/revision/latest/scale-to-width-down/150?cb=20180907103107",
+      profilePicture: "https://static.wikia.nocookie.net/shingekinokyojin/images/0/05/Frieda_Reiss_%28Anime%29_character_image.png",
       username: "Frieda Reiss",
     },
   ];
