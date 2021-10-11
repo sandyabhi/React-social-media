@@ -1,10 +1,27 @@
+import { useEffect, useState } from "react";
 import "../styles/profile.css";
 import Feed from "./Feed";
 import RightBar from "./RightBar";
 import SideBar from "./SideBar";
 import TopBar from "./TopBar";
+import axios from "axios";
 
 export default function Profile() {
+  const [user, setUser] = useState({});
+
+  
+  useEffect(() => {
+    const fetchUser = async () => {
+
+      // /user ???
+      const res = await axios.get(`users?username=may`);
+      console.log(res);
+      setUser(res.data);
+    };
+
+    fetchUser();
+  }, []);
+
   return (
     <>
       <TopBar />
@@ -25,12 +42,12 @@ export default function Profile() {
               />
             </div>
             <div className="profileInfo">
-                <h4 className="profileInfoName">ssswwww</h4>
-                <span className="profileInfoDesc">dadadadadaddada</span>
+                <h4 className="profileInfoName">{user.username}</h4>
+                <span className="profileInfoDesc">{user.desc}</span>
             </div>
           </div>
           <div className="profileRightBottom">
-            <Feed />
+            <Feed username="may" />
             <RightBar profile />
           </div>
         </div>
