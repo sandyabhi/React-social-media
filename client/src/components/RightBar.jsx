@@ -55,7 +55,7 @@ export default function RightBar({ user }) {
         <div className="rightbarFollowings">
           <div className="rightbarFollowing">
             <img
-            alt="img"
+              alt="img"
               src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDF8fHBlcnNvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
               className="rightbarFollowingImg"
             ></img>
@@ -63,6 +63,7 @@ export default function RightBar({ user }) {
           </div>
           <div className="rightbarFollowing">
             <img
+              alt="img"
               src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDF8fHBlcnNvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
               className="rightbarFollowingImg"
             ></img>

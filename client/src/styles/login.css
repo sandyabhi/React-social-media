@@ -52,6 +52,7 @@
 }
 
 .loginButton {
+  cursor: pointer;
   height: 50px;
   border-radius: 10px;
   border: none;
@@ -62,11 +63,15 @@
 }
 
 .loginForgot {
+  cursor: pointer;
   text-align: center;
   color: teal;
+  border: none;
+  background-color: white;
 }
 
 .loginRegister {
+  cursor: pointer;
   height: 50px;
   align-self: center;
   border-radius: 10px;

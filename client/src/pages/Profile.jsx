@@ -10,15 +10,14 @@ import { useParams } from "react-router";
 export default function Profile() {
   const [user, setUser] = useState({});
   const nopic =
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Oryctolagus_cuniculus_Rcdo.jpg/800px-Oryctolagus_cuniculus_Rcdo.jpg";
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Oryctolagus_cuniculus_Rcdo.jpg/800px-Oryctolagus_cuniculus_Rcdo.jpg";
 
   // const params= useParams()
   // console.log(params.username)
-  const username = useParams().username
+  const username = useParams().username;
 
   useEffect(() => {
     const fetchUser = async () => {
-
       // /user ???
       const res = await axios.get(`/users?username=${username}`);
       console.log(res);
@@ -42,13 +41,14 @@ export default function Profile() {
                 className="profileCoverImg"
               />
               <img
-                src={user.profilePicture || nopic}  alt=""
+                src={user.profilePicture || nopic}
+                alt=""
                 className="profileUserImg"
               />
             </div>
             <div className="profileInfo">
-                <h4 className="profileInfoName">{user.username}</h4>
-                <span className="profileInfoDesc">{user.desc}</span>
+              <h4 className="profileInfoName">{user.username}</h4>
+              <span className="profileInfoDesc">{user.desc}</span>
             </div>
           </div>
           <div className="profileRightBottom">
