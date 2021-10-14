@@ -85,14 +85,14 @@ router.get("/timeline/:userId", async (req, res) => {
         return Post.find({ userId: friendId });
       })
     );
-    res.json(userPosts.concat(...friendPosts));
+    res.status(200).json(userPosts.concat(...friendPosts));
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
 
-//get users posts
+//get user's all posts
 router.get("/profile/:username", async (req, res) => {
   try {
     const user = await User.findOne({ username: req.params.username });

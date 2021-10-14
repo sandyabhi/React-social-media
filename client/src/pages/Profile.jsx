@@ -1,26 +1,32 @@
 import { useEffect, useState } from "react";
 import "../styles/profile.css";
-import Feed from "./Feed";
-import RightBar from "./RightBar";
-import SideBar from "./SideBar";
-import TopBar from "./TopBar";
+import Feed from "../components/Feed";
+import RightBar from "../components/RightBar";
+import SideBar from "../components/SideBar";
+import TopBar from "../components/TopBar";
 import axios from "axios";
+import { useParams } from "react-router";
 
 export default function Profile() {
   const [user, setUser] = useState({});
+  const nopic =
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Oryctolagus_cuniculus_Rcdo.jpg/800px-Oryctolagus_cuniculus_Rcdo.jpg";
 
-  
+  // const params= useParams()
+  // console.log(params.username)
+  const username = useParams().username
+
   useEffect(() => {
     const fetchUser = async () => {
 
       // /user ???
-      const res = await axios.get(`users?username=may`);
+      const res = await axios.get(`/users?username=${username}`);
       console.log(res);
       setUser(res.data);
     };
 
     fetchUser();
-  }, []);
+  }, [username]);
 
   return (
     <>
@@ -31,13 +37,12 @@ export default function Profile() {
           <div className="profileRightTop">
             <div className="profileCover">
               <img
-                src="https://images2.alphacoders.com/665/thumbbig-665356.webp"
+                src={user.coverPicture || nopic}
                 alt=""
                 className="profileCoverImg"
               />
               <img
-                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
-                alt=""
+                src={user.profilePicture || nopic}  alt=""
                 className="profileUserImg"
               />
             </div>
@@ -47,8 +52,8 @@ export default function Profile() {
             </div>
           </div>
           <div className="profileRightBottom">
-            <Feed username="may" />
-            <RightBar profile />
+            <Feed username={username} />
+            <RightBar user={user} />
           </div>
         </div>
       </div>

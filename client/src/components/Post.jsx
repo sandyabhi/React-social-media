@@ -9,13 +9,17 @@ export default function Post({ post }) {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
+
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   const nopic =
     "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Oryctolagus_cuniculus_Rcdo.jpg/800px-Oryctolagus_cuniculus_Rcdo.jpg";
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`users/${post.userId}`);
-      console.log(res );
+      const res = await axios.get(`/users/?userId=${post.userId}`);
+      console.log("ssad",res.data.username)
+      console.log("asadada",res);
       setUser(res.data);
     };
 
@@ -32,13 +36,13 @@ export default function Post({ post }) {
       <div className="postWrapper">
         <div className="postTop">
           <div className="postTopLeft">
-          <Link to={`profile/${user.username}`}>
-          <img
-              src={user.profilePicture || nopic}
-              alt="img"
-              className="postProfileImg"
-            />
-          </Link>
+            <Link to={`profile/${user.username}`}>
+              <img
+                src={user.profilePicture || nopic}
+                alt="img"
+                className="postProfileImg"
+              />
+            </Link>
             <span className="postUsername">{user.username}</span>
             <span className="postDate"> {format(post.createdAt)}</span>
           </div>
@@ -48,7 +52,7 @@ export default function Post({ post }) {
         </div>
         <div className="postCenter">
           <span className="postText">{post?.desc}</span>
-          <img src={post.img || nopic} alt="" className="postImg" />
+          <img src={PF+post.img} alt="" className="postImg" />
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">

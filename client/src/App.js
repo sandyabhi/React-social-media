@@ -1,6 +1,6 @@
-import Login from "./components/Login";
-import Profile from "./components/Profile";
-import Register from "./components/Register";
+import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import Register from "./pages/Register";
 import Home from "./pages/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 

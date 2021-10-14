@@ -1,32 +1,32 @@
 export const Users = [
     {
       id:1,
-      profilePicture: "https://images4.alphacoders.com/653/thumbbig-653541.webp",
-      username: "Petra Rall",
+      profilePicture: "person/1.jpeg",
+      username: "petra",
     },
     {
       id:2,
-      profilePicture: "https://static.wikia.nocookie.net/shingekinokyojin/images/8/8f/Isabel_Magnolia_%28Anime%29_character_image.png",
+      profilePicture: "person/2.jpeg",
       username: "Isabel Magnolia",
     },
     {
       id:3,
-      profilePicture: "https://static.wikia.nocookie.net/shingekinokyojin/images/e/e4/Hange_Zo%C3%AB_%28Anime%29_character_image.png",
+      profilePicture: "person/3.jpeg",
       username: "Hange Zoe",
     },
     {
       id:4,
-      profilePicture: "https://static.wikia.nocookie.net/shingekinokyojin/images/0/0a/Sasha_Braus_%28Anime%29_character_image.png",
+      profilePicture: "person/4.jpeg",
       username: "Sasha Braus",
     },
     {
       id:5,
-      profilePicture: "https://static.wikia.nocookie.net/shingekinokyojin/images/1/12/Lynne_%28Anime%29_character_image.png",
+      profilePicture: "person/5.jpeg",
       username: "Lynne",
     },
     {
       id:6,
-      profilePicture: "https://images.alphacoders.com/100/thumbbig-1000461.webp",
+      profilePicture: "person/6.jpeg",
       username: "Mikasa Ackerman",
     },
     {
@@ -72,7 +72,7 @@ export const Users = [
     {
       id: 3,
       desc: "Every moment is a fresh beginning.",
-      photo: "https://images3.alphacoders.com/653/thumbbig-653529.webp",
+      photo: "assests/person/1.jpeg",
       date: "1 hour ago",
       userId: 3,
       like: 61,
@@ -80,7 +80,7 @@ export const Users = [
     },
     {
       id: 4,
-      photo: "https://images2.alphacoders.com/665/thumbbig-665356.webp",
+      photo: "person/1.jpeg",
       date: "4 hours ago",
       userId: 4,
       like: 7,
@@ -96,7 +96,7 @@ export const Users = [
     },
     {
       id: 6,
-      photo: "https://images8.alphacoders.com/403/thumbbig-403477.webp",
+      photo: "person/1.jpeg",
       date: "1 day ago",
       userId: 6,
       like: 44,
@@ -105,7 +105,7 @@ export const Users = [
     {
       id: 7,
       desc: "Never regret anything that made you smile.",
-      photo: "assets/post/7.jpeg",
+      photo: "post/7.jpeg",
       date: "2 days ago",
       userId: 7,
       like: 52,

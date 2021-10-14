@@ -6,7 +6,7 @@ export default function TopBar() {
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
-        <Link to="/" style={{textDecoration:"none"}}>
+        <Link to="/" style={{ textDecoration: "none" }}>
           <span className="logo">Time Social</span>
         </Link>
       </div>
