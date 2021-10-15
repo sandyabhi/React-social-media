@@ -1,8 +1,25 @@
+import { useEffect, useState } from "react";
 import "../styles/rightbar.css";
 import { Users } from "../FakeData";
 import Online from "./Online";
+import axios from "axios";
 
 export default function RightBar({ user }) {
+
+const [friends, setFriends] = useState([])
+  
+  useEffect(() => {
+    const getFriends = async () => {
+      try {
+        const friendlist = await axios.get("/users/friends/" + user._id);
+        setFriends(friendlist.data)
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getFriends()
+  }, [user._id]);
+
   const HomeRightBar = () => {
     return (
       <>
@@ -53,14 +70,6 @@ export default function RightBar({ user }) {
         </div>
         <h1 className="rightbarTitle">User Friends</h1>
         <div className="rightbarFollowings">
-          <div className="rightbarFollowing">
-            <img
-              alt="img"
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDF8fHBlcnNvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
-              className="rightbarFollowingImg"
-            ></img>
-            <span className="rightbarFollowingName">RIO </span>
-          </div>
           <div className="rightbarFollowing">
             <img
               alt="img"

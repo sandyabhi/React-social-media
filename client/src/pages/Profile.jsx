@@ -7,10 +7,12 @@ import TopBar from "../components/TopBar";
 import axios from "axios";
 import { useParams } from "react-router";
 
+const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+const nopic =
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Oryctolagus_cuniculus_Rcdo.jpg/800px-Oryctolagus_cuniculus_Rcdo.jpg";
+
 export default function Profile() {
   const [user, setUser] = useState({});
-  const nopic =
-    "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Oryctolagus_cuniculus_Rcdo.jpg/800px-Oryctolagus_cuniculus_Rcdo.jpg";
 
   // const params= useParams()
   // console.log(params.username)
@@ -36,12 +38,12 @@ export default function Profile() {
           <div className="profileRightTop">
             <div className="profileCover">
               <img
-                src={user.coverPicture || nopic}
+                src={user.coverPicture ? PF + user.coverPicture : nopic}
                 alt=""
                 className="profileCoverImg"
               />
               <img
-                src={user.profilePicture || nopic}
+                src={user.profilePicture ? PF + user.profilePicture : nopic}
                 alt=""
                 className="profileUserImg"
               />

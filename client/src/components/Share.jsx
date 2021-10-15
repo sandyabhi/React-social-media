@@ -22,9 +22,27 @@ export default function Share() {
       desc: desc.current.value,
     };
 
+    if (file) {
+      const data = new FormData();
+      const fileName = Date.now() + file.name;
+      data.append("name", fileName);
+      data.append("file", file);
+      newPost.img = fileName;
+      console.log(fileName)
+      console.log(data)
+      try {
+        await axios.post("/upload", data);
+        window.location.reload()
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
     try {
       await axios.post("/posts", newPost);
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -54,7 +72,7 @@ export default function Share() {
                 style={{ display: "none" }}
                 type="file"
                 id="file"
-                accept=".png, .jpeg, .jpg"
+                accept=".png , .jpeg , .jpg , .ico"
                 onChange={(e) => setFile(e.target.files[0])}
               />
             </label>

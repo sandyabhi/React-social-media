@@ -4,7 +4,9 @@ const helmet = require("helmet");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const router = express.Router();
 const multer = require("multer");
+const path = require("path");
 
 const userRoute = require("./routes/users");
 const authRoute = require("./routes/auth");
@@ -14,9 +16,15 @@ const app = express();
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URL, () => {
-  console.log("mongo connected");
-});
+mongoose.connect(
+  process.env.MONGO_URL,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    console.log("mongo connected");
+  }
+);
+
+app.use("/images", express.static(path.join(__dirname, "public/images")));
 
 //middleware
 app.use(express.json());
@@ -28,16 +36,18 @@ const storage = multer.diskStorage({
     cb(null, "public/images");
   },
   filename: (req, file, cb) => {
-    cb(null, req.body.name);
+    cb(null, String(req.body.name));
+    console.log(String(req.body.name));
   },
 });
 
-const upload = multer();
-app.post("api/upload", upload.single("file"), (req, res) => {
+const upload = multer({ storage: storage });
+app.post("/api/upload", upload.single("file"), (req, res) => {
   try {
-    return res.status(200).json("File uploaded successfully");
+    console.log(req.file);
+    return res.status(200).json("File uploded successfully");
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 });
 
