@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import "../styles/post.css";
 import { MoreVert } from "@material-ui/icons";
 import axios from "axios";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 export default function Post({ post }) {
   const [like, setLike] = useState(post.likes.length);
@@ -12,14 +13,20 @@ export default function Post({ post }) {
 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
+  const { user: currentUser } = useContext(AuthContext);
+
   const nopic =
     "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Oryctolagus_cuniculus_Rcdo.jpg/800px-Oryctolagus_cuniculus_Rcdo.jpg";
 
   useEffect(() => {
+    setIsLiked(post.likes.includes(currentUser._id));
+  }, [currentUser._id, post.likes]);
+
+  useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(`/users/?userId=${post.userId}`);
-      console.log("ssad",res.data.username)
-      console.log("asadada",res);
+      console.log("ssad", res.data.username);
+      console.log("asadada", res);
       setUser(res.data);
     };
 
@@ -27,6 +34,10 @@ export default function Post({ post }) {
   }, [post.userId]);
 
   const likeHandler = () => {
+    try {
+      axios.put(`/posts/${post._id}/like`, { userId: currentUser._id });
+    } catch (err) {}
+
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
   };
@@ -52,7 +63,7 @@ export default function Post({ post }) {
         </div>
         <div className="postCenter">
           <span className="postText">{post?.desc}</span>
-          <img src={PF+post.img} alt="" className="postImg" />
+          <img src={PF + post.img} alt="" className="postImg" />
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">

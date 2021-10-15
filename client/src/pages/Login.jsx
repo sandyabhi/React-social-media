@@ -29,7 +29,6 @@ export default function Login() {
           <form className="loginBox" onSubmit={handleClick}>
             <input
               type="email"
-              required
               className="loginInput"
               required
               ref={email}
