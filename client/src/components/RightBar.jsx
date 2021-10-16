@@ -1,24 +1,53 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "../styles/rightbar.css";
 import { Users } from "../FakeData";
 import Online from "./Online";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+import { Add, Remove } from "@material-ui/icons";
+
+const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+const nopic =
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Oryctolagus_cuniculus_Rcdo.jpg/800px-Oryctolagus_cuniculus_Rcdo.jpg";
 
 export default function RightBar({ user }) {
+  const [friends, setFriends] = useState([]);
 
-const [friends, setFriends] = useState([])
-  
+  const { user: currentUser, dispatch } = useContext(AuthContext);
+
+  const [followed, setFollowed] = useState(
+    currentUser.followings.includes(user?.id)
+  );
+
   useEffect(() => {
     const getFriends = async () => {
       try {
-        const friendlist = await axios.get("/users/friends/" + user._id);
-        setFriends(friendlist.data)
+        const friendList = await axios.get("/users/friends/" + user._id);
+        setFriends(friendList.data);
       } catch (err) {
         console.log(err);
       }
     };
-    getFriends()
-  }, [user._id]);
+    getFriends();
+  }, [user]);
+
+  const handleClick = async () => {
+    try {
+      if (followed) {
+        await axios.put(`/users/${user._id}/unfollow`, {
+          userId: currentUser._id,
+        });
+        dispatch({ type: "UNFOLLOW", payload: user._id });
+      } else {
+        await axios.put(`/users/${user._id}/follow`, {
+          userId: currentUser._id,
+        });
+        dispatch({ type: "FOLLOW", payload: user._id });
+      }
+      setFollowed(!followed);
+    } catch (err) {}
+  };
 
   const HomeRightBar = () => {
     return (
@@ -51,6 +80,19 @@ const [friends, setFriends] = useState([])
   const ProfileRightBar = () => {
     return (
       <>
+        {user.username !== currentUser.username && (
+          <button className="rightbarFollowButton" onClick={handleClick}>
+            {followed ? (
+              <>
+                Unfollow <Remove />{" "}
+              </>
+            ) : (
+              <>
+                Follow <Add />{" "}
+              </>
+            )}
+          </button>
+        )}
         <h1 className="rightbarTitle">User Information</h1>
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
@@ -70,14 +112,25 @@ const [friends, setFriends] = useState([])
         </div>
         <h1 className="rightbarTitle">User Friends</h1>
         <div className="rightbarFollowings">
-          <div className="rightbarFollowing">
-            <img
-              alt="img"
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDF8fHBlcnNvbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
-              className="rightbarFollowingImg"
-            ></img>
-            <span className="rightbarFollowingName">RIO </span>
-          </div>
+          {friends.map((friend) => (
+            <Link
+              to={"/profile/" + friend.username}
+              style={{ textDecoration: "none" }}
+            >
+              <div className="rightbarFollowing">
+                <img
+                  alt={friend.username}
+                  src={
+                    friend.profilePicture ? PF + friend.profilePicture : nopic
+                  }
+                  className="rightbarFollowingImg"
+                ></img>
+                <span className="rightbarFollowingName">
+                  {friend.username}{" "}
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
       </>
     );
